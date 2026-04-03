@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Assistant - RAG Powered</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+      <div class="spinner"></div>
+      <h2>Loading AI Study Assistant...</h2>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-book-open icon-large"></i>
+            <h1>AI Study Assistant</h1>
+          </div>
+          <nav class="nav-buttons">
+            <button class="nav-btn active" data-view="chat">
+              <i class="fas fa-comments"></i>
+              <span>Chat</span>
+            </button>
+            <button class="nav-btn" data-view="docs">
+              <i class="fas fa-folder-open"></i>
+              <span>Documents</span>
+            </button>
+            <button class="upload-btn" id="uploadBtn">
+              <i class="fas fa-upload"></i>
+              <span>Upload</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" id="mainContent">
+      <!-- Chat View -->
+      <section id="chatView" class="view active">
+        <div class="container">
+          <div class="chat-container">
+            <div class="messages-container" id="messagesContainer">
+              <div class="welcome-message">
+                <i class="fas fa-robot welcome-icon"></i>
+                <h2>Welcome to your AI Study Assistant!</h2>
+                <p>Upload your PDFs and notes, then ask questions grounded in your materials.</p>
+              </div>
+            </div>
+            <div class="input-container">
+              <textarea 
+                id="chatInput" 
+                class="chat-input" 
+                placeholder="Ask a question about your notes..."
+                rows="2"
+              ></textarea>
+              <button id="sendBtn" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Documents View -->
+      <section id="docsView" class="view">
+        <div class="container">
+          <div class="documents-grid">
+            <!-- Stats Card -->
+            <div class="stats-card">
+              <div class="stats-header">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Library Stats</h3>
+              </div>
+              <button id="refreshStats" class="stats-btn">Refresh Stats</button>
+              <div id="statsContent" class="stats-content">
+                <div class="main-stats">
+                  <div id="totalDocs" class="main-stats-number">0</div>
+                  <div>Documents</div>
+                </div>
+                <div class="stats-grid">
+                  <div class="stat-item">
+                    <div id="totalChunks" class="stat-number">0</div>
+                    <div>Chunks</div>
+                  </div>
+                  <div class="stat-item">
+                    <div id="storageSize" class="stat-number">0 MB</div>
+                    <div>Storage</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Documents List -->
+            <div class="documents-section">
+              <div class="section-header">
+                <div class="search-container">
+                  <i class="fas fa-search search-icon"></i>
+                  <input type="text" id="docSearch" class="search-input" placeholder="Search documents...">
+                </div>
+                <button id="clearAllBtn" class="clear-all-btn">
+                  <i class="fas fa-trash"></i> Clear All
+                </button>
+              </div>
+              <div id="documentsList" class="documents-list">
+                <div class="empty-state">
+                  <i class="fas fa-folder-open empty-icon"></i>
+                  <h3>No documents yet</h3>
+                  <p>Upload your first PDF or notes to get started!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Upload Study Materials</h2>
+          <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="upload-area" id="uploadArea">
+          <div class="file-input-wrapper" id="fileDropZone">
+            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+            <input type="file" id="fileInput" class="file-input" accept=".pdf">
+            <p>Drag & drop PDF files here, or click to browse</p>
+            <small>Max 50MB per file</small>
+          </div>
+          <div id="uploadStatus"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
