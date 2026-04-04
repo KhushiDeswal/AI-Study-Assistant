@@ -1,9 +1,35 @@
-Flask==2.3.3
-Flask-CORS==4.0.0
-chromadb==0.4.15
-langchain-community==0.0.20
-langchain==0.0.350
+# Flask==2.3.3
+# Flask-CORS==4.0.0
+# chromadb==0.4.15
+# langchain-community==0.0.20
+# langchain==0.0.350
+# PyPDF2==3.0.1
+# sentence-transformers==2.2.2
+# ollama==0.1.7
+# python-dotenv==1.0.0
+# AI Study Assistant - Python dependencies
+# Install with: pip install -r requirements.txt
+
+# Web framework
+Flask==3.0.3
+Flask-CORS==4.0.1
+
+# Vector database
+chromadb==0.5.3
+
+# PDF processing
+PyMuPDF==1.24.9
 PyPDF2==3.0.1
-sentence-transformers==2.2.2
-ollama==0.1.7
-python-dotenv==1.0.0
+
+# OpenAI (v1+ client — fixes deprecated openai.Embedding.create / ChatCompletion.create)
+openai==1.40.0
+
+# LangChain (optional — used only if you swap out the custom processor)
+langchain==0.2.12
+langchain-community==0.2.11
+langchain-openai==0.1.20
+
+# Utilities
+python-dotenv==1.0.1
+werkzeug==3.0.3
+pydantic==2.8.2
